@@ -17,7 +17,7 @@ export default function TopBreeds() {
           <span className="mb-[0.8rem] block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[#1B6B3A]">
             Explore Variety
           </span>
-          <h2 className="font-[var(--font-playfair)] text-[2.8rem] font-bold tracking-[-0.5px] text-[#1A1A1A]">
+          <h2 className="font-display text-[2.8rem] font-bold tracking-[-0.5px] text-[#1A1A1A]">
             Top Breeds Available
           </h2>
           <p className="mx-auto mt-4 max-w-[500px] text-center text-base leading-[1.7] text-[#6B6B6B]">

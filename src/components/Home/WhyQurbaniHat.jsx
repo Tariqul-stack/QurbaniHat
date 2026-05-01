@@ -26,7 +26,7 @@ export default function WhyQurbaniHat() {
           <span className="mb-[0.8rem] block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[#1B6B3A]">
             Why Qurbanihat?
           </span>
-          <h2 className="mb-6 max-w-[380px] font-[var(--font-playfair)] text-[2.2rem] font-bold leading-[1.18] tracking-[-0.5px] text-[#1A1A1A]">
+          <h2 className="mb-6 max-w-[380px] font-display text-[2.2rem] font-bold leading-[1.18] tracking-[-0.5px] text-[#1A1A1A]">
             Your trusted Qurbani marketplace
           </h2>
 
@@ -54,7 +54,7 @@ export default function WhyQurbaniHat() {
           <div className="mb-[1.2rem] text-[3.5rem] tracking-[4px]">
             🐄🐐🐑
           </div>
-          <h3 className="mb-2 font-[var(--font-playfair)] text-[1.3rem] font-bold text-[#1A1A1A]">
+          <h3 className="mb-2 font-display text-[1.3rem] font-bold text-[#1A1A1A]">
             250+ Animals Available
           </h3>
           <p className="mb-6 text-[0.88rem] text-[#6B6B6B]">

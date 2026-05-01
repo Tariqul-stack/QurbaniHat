@@ -30,8 +30,7 @@ export default function Navbar() {
             🐄
           </div>
           <span
-            style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-[2.05rem] font-bold leading-none tracking-[-0.04em] text-[rgb(15,64,32)]"
+            className="font-display text-[2.05rem] font-bold leading-none tracking-[-0.04em] text-[rgb(15,64,32)]"
           >
             Qurbani<span className="text-[rgb(200,134,10)]">Hat</span>
           </span>
@@ -43,11 +42,10 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className={`text-[0.95rem] no-underline transition-colors duration-200 ${
-                isActive(href)
-                  ? "font-semibold text-[rgb(27,107,58)]"
-                  : "font-medium text-[rgb(107,107,107)] hover:text-[rgb(27,107,58)]"
-              }`}
+              className={`text-[0.95rem] no-underline transition-colors duration-200 ${isActive(href)
+                ? "font-semibold text-[rgb(27,107,58)]"
+                : "font-medium text-[rgb(107,107,107)] hover:text-[rgb(27,107,58)]"
+                }`}
             >
               {label}
             </Link>
@@ -55,11 +53,10 @@ export default function Navbar() {
           {user && (
             <Link
               href="/profile"
-              className={`text-[0.95rem] no-underline transition-colors duration-200 ${
-                isActive("/profile")
-                  ? "font-semibold text-[rgb(27,107,58)]"
-                  : "font-medium text-[rgb(107,107,107)] hover:text-[rgb(27,107,58)]"
-              }`}
+              className={`text-[0.95rem] no-underline transition-colors duration-200 ${isActive("/profile")
+                ? "font-semibold text-[rgb(27,107,58)]"
+                : "font-medium text-[rgb(107,107,107)] hover:text-[rgb(27,107,58)]"
+                }`}
             >
               My Profile
             </Link>
@@ -129,11 +126,10 @@ export default function Navbar() {
               key={href}
               href={href}
               onClick={() => setMobileOpen(false)}
-              className={`py-2 text-sm no-underline transition-colors duration-200 ${
-                isActive(href)
-                  ? "font-semibold text-[rgb(27,107,58)]"
-                  : "font-medium text-[rgb(107,107,107)]"
-              }`}
+              className={`py-2 text-sm no-underline transition-colors duration-200 ${isActive(href)
+                ? "font-semibold text-[rgb(27,107,58)]"
+                : "font-medium text-[rgb(107,107,107)]"
+                }`}
             >
               {label}
             </Link>

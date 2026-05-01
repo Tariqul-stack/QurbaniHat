@@ -39,7 +39,7 @@ export default function HeroSection() {
             <span>Eid ul-Adha 2026 Collection Live</span>
           </div>
 
-          <h1 className="max-w-[700px] font-[var(--font-playfair)] text-[3.2rem] font-bold leading-[1.15] tracking-[-0.5px] text-white">
+          <h1 className="max-w-[700px] font-display text-[3.2rem] font-bold leading-[1.15] tracking-[-0.5px] text-white">
             Premium Livestock for
             <br />
             Your <span className="text-[#F5A623]">Qurbani</span>
@@ -71,7 +71,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-8">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-[var(--font-playfair)] text-[1.8rem] font-semibold text-white">
+                  <div className="font-display text-[1.8rem] font-semibold text-white">
                     {stat.value}
                   </div>
                   <div className="mt-1 text-[0.8rem] text-[rgba(255,255,255,0.5)]">
@@ -88,7 +88,7 @@ export default function HeroSection() {
             <div className="mb-4 text-[5rem] drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
               🐄
             </div>
-            <h3 className="font-[var(--font-playfair)] text-[1.3rem] font-semibold text-white">
+            <h3 style={{ fontFamily: "'Playfair Display', serif" }} className=" text-[1.3rem] font-semibold text-white">
               Deshi Shahi Cow
             </h3>
             <p className="mt-2 text-[0.85rem] text-[rgba(255,255,255,0.6)]">

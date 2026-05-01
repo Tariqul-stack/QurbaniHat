@@ -24,7 +24,7 @@ export default function FeaturedAnimals() {
           <span className="mb-[0.8rem] block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[#1B6B3A]">
             Handpicked For You
           </span>
-          <h2 className="font-[var(--font-playfair)] text-[2.8rem] font-bold tracking-[-0.5px] text-[#1A1A1A]">
+          <h2 className="font-display text-[2.8rem] font-bold tracking-[-0.5px] text-[#1A1A1A]">
             Featured Animals
           </h2>
           <p className="mx-auto mt-4 max-w-[500px] text-center text-base leading-[1.7] text-[#6B6B6B]">
@@ -42,17 +42,16 @@ export default function FeaturedAnimals() {
             >
               <div className="relative flex h-[200px] items-center justify-center bg-[#D8EDD8]">
                 <span
-                  className={`absolute left-3 top-3 rounded-md px-3 py-1 text-[0.75rem] font-semibold text-white ${
-                    typeBadgeClasses[animal.type] || "bg-[#C8860A]"
-                  }`}
+                  className={`absolute left-3 top-3 rounded-md px-3 py-1 text-[0.75rem] font-semibold text-white ${typeBadgeClasses[animal.type] || "bg-[#C8860A]"
+                    }`}
                 >
                   {animal.type}
                 </span>
-                <span className="text-[5rem]">{animal.emoji}</span>
+                <span className="text-[5rem]">{animal.icon}</span>
               </div>
 
               <div className="p-[1.2rem]">
-                <h3 className="mb-2 font-[var(--font-playfair)] text-[1.15rem] font-semibold text-[#1A1A1A]">
+                <h3 className="mb-2 font-display text-[1.15rem] font-semibold text-[#1A1A1A]">
                   {animal.name}
                 </h3>
 
@@ -64,7 +63,7 @@ export default function FeaturedAnimals() {
 
                 <div className="mt-4 border-t border-[#E2E8E0] pt-4">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="font-[var(--font-playfair)] text-[1.3rem] font-bold text-[#0F4020]">
+                    <span className="font-display text-[1.3rem] font-bold text-[#0F4020]">
                       ৳{animal.price.toLocaleString("en-BD")}
                     </span>
                     <button

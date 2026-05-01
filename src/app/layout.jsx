@@ -26,12 +26,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className={`${playfair.variable} ${dmSans.variable}`}
-    >
-      <body className="min-h-screen flex flex-col antialiased">
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
+      <body>
         <AuthProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

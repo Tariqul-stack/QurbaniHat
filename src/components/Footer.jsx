@@ -20,7 +20,7 @@ const contactItems = [
   "📍 Dhaka, Bangladesh",
 ];
 
-const socialLinks = ["f", "t", "in"];
+const socialLinks = ["f", "Y", "in"];
 
 const headingClass =
   "mb-4 text-[0.78rem] font-semibold uppercase tracking-[1.2px] text-[rgba(255,255,255,0.4)]";
@@ -34,7 +34,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px]">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-4 xl:gap-12">
           <div>
-            <h2 className="mb-3 font-[var(--font-playfair)] text-[1.3rem] font-bold text-white">
+            <h2 className="mb-3 font-display text-[1.3rem] font-bold text-white">
               QurbaniHat
             </h2>
             <p className="max-w-[220px] text-[0.85rem] leading-[1.7] text-[rgba(255,255,255,0.5)]">

@@ -36,7 +36,7 @@ export default function QurbaniTips() {
           <span className="mb-[0.8rem] block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[rgba(255,255,255,0.45)]">
             Guidance
           </span>
-          <h2 className="font-[var(--font-playfair)] text-[2.8rem] font-bold tracking-[-0.5px] text-white">
+          <h2 className="font-display text-[2.8rem] font-bold tracking-[-0.5px] text-white">
             Qurbani Tips
           </h2>
           <p className="mx-auto mt-4 max-w-[500px] text-center text-base leading-[1.7] text-[rgba(255,255,255,0.6)]">

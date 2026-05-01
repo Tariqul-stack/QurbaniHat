@@ -38,7 +38,7 @@ export default function AnimalDetailsPage() {
               <span>Back to All Animals</span>
             </Link>
 
-            <h1 className="font-[var(--font-playfair)] font-bold text-[2rem] text-[#1A1A1A] mb-3.5">
+            <h1 className="font-display font-bold text-[2rem] text-[#1A1A1A] mb-3.5">
               {animal.name}
             </h1>
 
@@ -55,7 +55,7 @@ export default function AnimalDetailsPage() {
               </span>
             </div>
 
-            <div className="font-[var(--font-playfair)] font-bold text-[2.4rem] text-[#0F4020] mb-6">
+            <div className="font-display font-bold text-[2.4rem] text-[#0F4020] mb-6">
               ৳{animal.price.toLocaleString()}
             </div>
 
@@ -103,7 +103,7 @@ export default function AnimalDetailsPage() {
             {/* Booking section (Login Required Card) */}
             <div className="bg-white border border-[#E2E8E0] rounded-[16px] p-10 text-center shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
               <div className="text-[2.5rem] mb-4">🔒</div>
-              <h2 className="font-[var(--font-playfair)] font-bold text-[1.4rem] text-[#1A1A1A] mb-2">
+              <h2 className="font-display font-bold text-[1.4rem] text-[#1A1A1A] mb-2">
                 Login Required
               </h2>
               <p className="text-[0.88rem] text-[#6B6B6B] mb-6">

@@ -14,7 +14,7 @@ export default function LoginPage() {
           <div className="mx-auto mb-[1.2rem] flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1B6B3A] text-[2rem]">
             🐄
           </div>
-          <h1 className="mb-[0.4rem] font-[var(--font-playfair)] text-[2rem] font-bold text-[#1A1A1A]">
+          <h1 className="mb-[0.4rem] font-display text-[2rem] font-bold text-[#1A1A1A]">
             Welcome Back
           </h1>
           <p className="mb-[1.8rem] text-[0.95rem] text-[#6B6B6B]">

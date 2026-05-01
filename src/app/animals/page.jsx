@@ -68,7 +68,7 @@ export default function AnimalsPage() {
     <section className="bg-[#FAFAF5]">
       <div className="bg-[linear-gradient(135deg,#0F4020,#1B6B3A)] px-8 py-[60px]">
         <div className="mx-auto max-w-[1200px]">
-          <h1 className="mb-2 font-[var(--font-playfair)] text-[2.4rem] font-bold text-white">
+          <h1 className="mb-2 font-display text-[2.4rem] font-bold text-white">
             All Animals
           </h1>
           <p className="text-[0.95rem] text-[rgba(255,255,255,0.7)]">
@@ -178,7 +178,7 @@ export default function AnimalsPage() {
               </div>
 
               <div className="px-[1.2rem] pb-[1.4rem] pt-[1.2rem]">
-                <h2 className="mb-[0.4rem] font-[var(--font-playfair)] text-[1.1rem] font-bold text-[#1A1A1A]">
+                <h2 className="mb-[0.4rem] font-display text-[1.1rem] font-bold text-[#1A1A1A]">
                   {animal.name}
                 </h2>
 
@@ -193,7 +193,7 @@ export default function AnimalsPage() {
                 <div className="my-[0.9rem] border-t border-[#E2E8E0]" />
 
                 <div className="flex items-center justify-between gap-4">
-                  <span className="font-[var(--font-playfair)] text-[1.2rem] font-bold text-[#0F4020]">
+                  <span className="font-display text-[1.2rem] font-bold text-[#0F4020]">
                     ৳{animal.price.toLocaleString()}
                   </span>
 
