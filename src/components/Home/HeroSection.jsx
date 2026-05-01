@@ -36,7 +36,7 @@ export default function HeroSection() {
         <div>
           <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[rgba(200,134,10,0.4)] bg-[rgba(200,134,10,0.2)] px-5 py-2 text-[0.8rem] font-medium text-[#F5C842]">
             <span className="h-2.5 w-2.5 rounded-full bg-[#F5C842]" />
-            <span>Eid ul-Adha 2025 Collection Live</span>
+            <span>Eid ul-Adha 2026 Collection Live</span>
           </div>
 
           <h1 className="max-w-[700px] font-[var(--font-playfair)] text-[3.2rem] font-bold leading-[1.15] tracking-[-0.5px] text-white">
