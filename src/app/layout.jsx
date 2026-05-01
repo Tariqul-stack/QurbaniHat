@@ -2,6 +2,7 @@ import { Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar.jsx';
+import Footer from '@/components/Footer.jsx';
 
 const playfair = Playfair_Display({
   variable: '--font-playfair',
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>

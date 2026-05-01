@@ -17,7 +17,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#0F4020] px-8 py-20">
+    <section className="relative overflow-hidden bg-[#0F4020] px-8 ">
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-[0.035]"
@@ -39,9 +39,7 @@ export default function HeroSection() {
             <span>Eid ul-Adha 2025 Collection Live</span>
           </div>
 
-          <h1
-            className="max-w-[700px] font-[var(--font-playfair)] text-[3.2rem] font-bold leading-[1.15] tracking-[-0.5px] text-white"
-          >
+          <h1 className="max-w-[700px] font-[var(--font-playfair)] text-[3.2rem] font-bold leading-[1.15] tracking-[-0.5px] text-white">
             Premium Livestock for
             <br />
             Your <span className="text-[#F5A623]">Qurbani</span>
