@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand Colors ──────────────────────────────────────── */
+  --color-green:       #1B6B3A;
+  --color-green-light: #2E8B57;
+  --color-green-pale:  #E8F5EE;
+  --color-green-dark:  #0F4020;
+  --color-amber:       #C8860A;
+  --color-amber-light: #F5A623;
+  --color-amber-pale:  #FDF3E0;
+  --color-cream:       #FAFAF5;
+  --color-qtext:       #1A1A1A;
+  --color-muted:       #6B6B6B;
+  --color-subtle:      #9B9B9B;
+  --color-border:      #E2E8E0;
+  --color-border-dark: #C5D5C0;
+
+  /* ── Font Families ─────────────────────────────────────── */
+  --font-display: var(--font-playfair);
+  --font-body:    var(--font-dm-sans);
+}
+
+/* ─── Base ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
+  background-color: #FAFAF5;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Spinner ───────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #E2E8E0;
+  border-top-color: #1B6B3A;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
