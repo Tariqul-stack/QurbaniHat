@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AnimatedCard from "@/components/AnimatedCard";
+import LottieLoader from "@/components/LottieLoader";
 import { animals } from "@/data/animals";
 
 const filters = [
@@ -31,8 +32,13 @@ export default function AnimalsPage() {
   const [sortOpen, setSortOpen] = useState(false);
   const [sortValue, setSortValue] = useState("");
   const [sortLabel, setSortLabel] = useState("Sort by");
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoading(false);
+    }, 1000);
+
     const handleClick = (e) => {
       if (!e.target.closest("#sort-dropdown")) {
         setSortOpen(false);
@@ -41,7 +47,10 @@ export default function AnimalsPage() {
 
     document.addEventListener("mousedown", handleClick);
 
-    return () => document.removeEventListener("mousedown", handleClick);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("mousedown", handleClick);
+    };
   }, []);
 
   const filtered =
@@ -161,59 +170,63 @@ export default function AnimalsPage() {
       </div>
 
       <div className="min-h-[calc(100vh-68px-60px)] bg-[#FAFAF5] px-8 py-10">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {filtered.map((animal, index) => (
-            <AnimatedCard
-              key={animal.id}
-              delay={index * 80}
-              onClick={() => goToAnimal(animal.id)}
-              className="overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
-            >
-              <div className="relative flex h-[200px] items-center justify-center rounded-t-[12px] bg-[#D8EDD8]">
-                <span
-                  className={`absolute left-3 top-3 rounded-md px-3 py-1 text-[0.75rem] font-semibold tracking-[0.3px] text-white ${badgeClasses[animal.type] || "bg-[#C8860A]"
-                    }`}
-                >
-                  {animal.type}
-                </span>
-                <span className="text-[4.5rem]">{animal.icon}</span>
-              </div>
-
-              <div className="px-[1.2rem] pb-[1.4rem] pt-[1.2rem]">
-                <h2 className="mb-[0.4rem] font-display text-[1.1rem] font-bold text-[#1A1A1A]">
-                  {animal.name}
-                </h2>
-
-                <div className="flex flex-wrap items-center gap-[6px] text-[0.8rem] text-[#6B6B6B]">
-                  <span>⚖️ {animal.weight}kg</span>
-                  <span>·</span>
-                  <span>📍 {animal.location}</span>
-                  <span>·</span>
-                  <span>🎂 {animal.age}yr</span>
-                </div>
-
-                <div className="my-[0.9rem] border-t border-[#E2E8E0]" />
-
-                <div className="flex items-center justify-between gap-4">
-                  <span className="font-display text-[1.2rem] font-bold text-[#0F4020]">
-                    ৳{animal.price.toLocaleString()}
-                  </span>
-
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      goToAnimal(animal.id);
-                    }}
-                    className="rounded-lg bg-[#E8F5EE] px-[18px] py-[7px] text-[0.82rem] font-medium text-[#1B6B3A] transition-all duration-200 hover:bg-[#1B6B3A] hover:text-white"
+        {pageLoading ? (
+          <LottieLoader message="Finding the best animals for you..." />
+        ) : (
+          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {filtered.map((animal, index) => (
+              <AnimatedCard
+                key={animal.id}
+                delay={index * 80}
+                onClick={() => goToAnimal(animal.id)}
+                className="overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
+              >
+                <div className="relative flex h-[200px] items-center justify-center rounded-t-[12px] bg-[#D8EDD8]">
+                  <span
+                    className={`absolute left-3 top-3 rounded-md px-3 py-1 text-[0.75rem] font-semibold tracking-[0.3px] text-white ${badgeClasses[animal.type] || "bg-[#C8860A]"
+                      }`}
                   >
-                    Details
-                  </button>
+                    {animal.type}
+                  </span>
+                  <span className="text-[4.5rem]">{animal.icon}</span>
                 </div>
-              </div>
-            </AnimatedCard>
-          ))}
-        </div>
+
+                <div className="px-[1.2rem] pb-[1.4rem] pt-[1.2rem]">
+                  <h2 className="mb-[0.4rem] font-display text-[1.1rem] font-bold text-[#1A1A1A]">
+                    {animal.name}
+                  </h2>
+
+                  <div className="flex flex-wrap items-center gap-[6px] text-[0.8rem] text-[#6B6B6B]">
+                    <span>⚖️ {animal.weight}kg</span>
+                    <span>·</span>
+                    <span>📍 {animal.location}</span>
+                    <span>·</span>
+                    <span>🎂 {animal.age}yr</span>
+                  </div>
+
+                  <div className="my-[0.9rem] border-t border-[#E2E8E0]" />
+
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-display text-[1.2rem] font-bold text-[#0F4020]">
+                      ৳{animal.price.toLocaleString()}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        goToAnimal(animal.id);
+                      }}
+                      className="rounded-lg bg-[#E8F5EE] px-[18px] py-[7px] text-[0.82rem] font-medium text-[#1B6B3A] transition-all duration-200 hover:bg-[#1B6B3A] hover:text-white"
+                    >
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </AnimatedCard>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

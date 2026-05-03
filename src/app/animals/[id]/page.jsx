@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from "@/context/AuthContext"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSpring, animated } from "@react-spring/web"
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -20,11 +20,23 @@ export default function AnimalDetailsPage() {
   const [showToast, setShowToast] = useState(false)
   const [toastMsg, setToastMsg] = useState("")
   const [toastType, setToastType] = useState("success")
+  const [pageEntered, setPageEntered] = useState(false)
   
   const animal = animals.find(a => a.id === Number(id))
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageEntered(true)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const pageSpring = useSpring({
-    from: { opacity: 0, transform: "translateY(20px)" },
-    to: { opacity: 1, transform: "translateY(0px)" },
+    opacity: pageEntered ? 1 : 0,
+    transform: pageEntered
+      ? "translateY(0px)"
+      : "translateY(20px)",
     config: { tension: 280, friction: 26 }
   })
 

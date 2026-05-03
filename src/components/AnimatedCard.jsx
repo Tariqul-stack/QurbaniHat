@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { useSpring, animated } from "@react-spring/web";
-import { useState } from "react";
+import { useSpring, animated } from "@react-spring/web"
+import { useState } from "react"
 
 export default function AnimatedCard({
   children,
@@ -9,29 +9,24 @@ export default function AnimatedCard({
   onClick,
   delay = 0,
 }) {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(false)
 
   const entrySpring = useSpring({
     from: {
       opacity: 0,
-      transform: "translateY(32px) scale(0.97)",
+      transform: "translateY(28px) scale(0.97)",
     },
     to: {
       opacity: 1,
       transform: "translateY(0px) scale(1)",
     },
-    delay,
+    delay: delay,
     config: {
       tension: 280,
       friction: 26,
       mass: 1,
     },
-  });
-
-  useSpring({
-    color: hovered ? "#0F4020" : "#1B6B3A",
-    config: { tension: 400, friction: 28 },
-  });
+  })
 
   const hoverSpring = useSpring({
     transform: hovered
@@ -45,7 +40,7 @@ export default function AnimatedCard({
       friction: 22,
       mass: 0.8,
     },
-  });
+  })
 
   return (
     <animated.div
@@ -57,5 +52,5 @@ export default function AnimatedCard({
     >
       {children}
     </animated.div>
-  );
+  )
 }

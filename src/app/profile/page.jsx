@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import LottieLoader from "@/components/LottieLoader";
 import { useAuth } from "@/context/AuthContext";
 
 const infoRows = (user) => [
@@ -24,9 +25,10 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#E2E8E0] border-t-[#1B6B3A]" />
-      </div>
+      <LottieLoader
+        fullScreen={true}
+        message="Loading your profile..."
+      />
     );
   }
 

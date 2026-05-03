@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
-  serverExternalPackages: ['mongodb'],
+  transpilePackages: ['@lottiefiles/dotlottie-react'],
+  experimental: {
+    serverExternalPackages: ['mongodb'],
+  },
 };
 
 export default nextConfig;
