@@ -1,11 +1,53 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { loginWithEmail, loginWithGoogle } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    setError("");
+
+    if (!email || !password) {
+      setError("Please enter email and password");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await loginWithEmail(email, password);
+      router.push("/");
+    } catch (err) {
+      setError(err.message || "Login failed. Check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogle = async () => {
+    setError("");
+    try {
+      await loginWithGoogle();
+    } catch (err) {
+      console.error(err);
+      setError("Google sign-in failed. Try again.");
+    }
+  };
+
 
   return (
     <section className="flex min-h-screen items-center justify-center bg-[#EFF5F0] p-8">
@@ -24,7 +66,7 @@ export default function LoginPage() {
 
         <button
           type="button"
-          onClick={() => console.log("Google login")}
+          onClick={handleGoogle}
           className="mb-6 flex w-full items-center justify-center gap-[10px] rounded-full border-[1.5px] border-[#E2E8E0] bg-white p-[14px] text-[0.95rem] font-medium text-[#1A1A1A] transition-all duration-200 hover:border-[#C5D5C0]"
         >
           <svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true">
@@ -67,7 +109,8 @@ export default function LoginPage() {
             id="email"
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
             placeholder="you@example.com"
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
@@ -84,25 +127,35 @@ export default function LoginPage() {
             id="password"
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
             placeholder="••••••••"
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
         </div>
 
+        {error && (
+          <p className="mb-3 rounded-lg bg-red-50 px-4 py-3 text-[0.83rem] text-red-600 border border-red-100">
+            {error}
+          </p>
+        )}
+
         <button
           type="button"
-          onClick={() => console.log("Login:", email, password)}
-          className="mt-2 w-full rounded-xl bg-[#1B6B3A] p-[15px] text-base font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#0F4020] hover:shadow-[0_4px_12px_rgba(27,107,58,0.3)]"
+          onClick={handleLogin}
+          disabled={loading}
+          className={`mt-2 w-full rounded-xl bg-[#1B6B3A] p-[15px] text-base font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#0F4020] hover:shadow-[0_4px_12px_rgba(27,107,58,0.3)] ${
+            loading ? "opacity-70 cursor-not-allowed" : ""
+          }`}
         >
-          Login to Account
+          {loading ? "Logging in..." : "Login to Account"}
         </button>
 
         <p className="mt-[1.2rem] text-center text-[0.88rem] text-[#6B6B6B]">
           Don&apos;t have an account?{" "}
           <Link
             href="/register"
-            className="font-semibold text-[#1B6B3A] no-underline"
+            className="font-semibold text-[#1B6B3A] no-underline hover:underline"
           >
             Register
           </Link>

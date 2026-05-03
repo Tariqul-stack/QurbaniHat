@@ -41,3 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 qurbanihat_full_website.html
+.env.local

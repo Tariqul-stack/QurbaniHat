@@ -1,13 +1,57 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const { registerWithEmail, loginWithGoogle } = useAuth();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = async () => {
+    setError("");
+
+    if (!name || !email || !password) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Better Auth signUp.email takes name, email, password
+      // photoURL can be passed as 'image' if the context supports it, 
+      // but for now we follow the user's provided logic.
+      await registerWithEmail(name, email, password);
+      router.push("/login");
+    } catch (err) {
+      setError(err.message || "Registration failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogle = async () => {
+    setError("");
+    try {
+      await loginWithGoogle();
+    } catch (err) {
+      console.error(err);
+      setError("Google sign-in failed. Try again.");
+    }
+  };
 
   return (
     <section className="flex min-h-screen items-center justify-center bg-[#EFF5F0] p-8">
@@ -26,7 +70,7 @@ export default function RegisterPage() {
 
         <button
           type="button"
-          onClick={() => console.log("Google register")}
+          onClick={handleGoogle}
           className="mb-6 flex w-full items-center justify-center gap-[10px] rounded-full border-[1.5px] border-[#E2E8E0] bg-white p-[14px] text-[0.95rem] font-medium text-[#1A1A1A] transition-all duration-200 hover:border-[#C5D5C0]"
         >
           <svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true">
@@ -69,7 +113,7 @@ export default function RegisterPage() {
             id="name"
             type="text"
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(e) => setName(e.target.value)}
             placeholder="Ahmed Hassan"
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
@@ -86,7 +130,7 @@ export default function RegisterPage() {
             id="email"
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
@@ -103,7 +147,7 @@ export default function RegisterPage() {
             id="photo-url"
             type="url"
             value={photoURL}
-            onChange={(event) => setPhotoURL(event.target.value)}
+            onChange={(e) => setPhotoURL(e.target.value)}
             placeholder="https://..."
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
@@ -120,18 +164,27 @@ export default function RegisterPage() {
             id="password"
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Min. 6 characters"
             className="w-full rounded-xl border-[1.5px] border-[#E2E8E0] bg-white px-4 py-[13px] text-[0.92rem] text-[#1A1A1A] outline-none transition-colors duration-200 placeholder:text-[#9B9B9B] focus:border-[#1B6B3A] focus:shadow-[0_0_0_3px_rgba(27,107,58,0.08)]"
           />
         </div>
 
+        {error && (
+          <p className="mb-3 rounded-lg bg-red-50 px-4 py-3 text-[0.83rem] text-red-600 border border-red-100">
+            {error}
+          </p>
+        )}
+
         <button
           type="button"
-          onClick={() => console.log("Register:", name, email)}
-          className="mt-2 w-full rounded-xl bg-[#1B6B3A] p-[15px] text-base font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#0F4020] hover:shadow-[0_4px_12px_rgba(27,107,58,0.3)]"
+          onClick={handleRegister}
+          disabled={loading}
+          className={`mt-2 w-full rounded-xl bg-[#1B6B3A] p-[15px] text-base font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#0F4020] hover:shadow-[0_4px_12px_rgba(27,107,58,0.3)] ${
+            loading ? "opacity-70 cursor-not-allowed" : ""
+          }`}
         >
-          Create Account
+          {loading ? "Creating account..." : "Create Account"}
         </button>
 
         <p className="mt-[1.2rem] text-center text-[0.88rem] text-[#6B6B6B]">
