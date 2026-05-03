@@ -70,9 +70,25 @@ export default function Navbar() {
               <Link href="/profile">
                 <div
                   title={user.name}
-                  className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-[rgb(27,107,58)] text-sm font-bold text-white transition-transform duration-200 hover:scale-105"
+                  className="h-11 w-11 cursor-pointer rounded-full overflow-hidden border-2 border-[rgb(27,107,58)] transition-transform duration-200 hover:scale-105"
                 >
-                  {user.initials}
+                  {user.photo ? (
+                    <img
+                      src={user.photo}
+                      alt={user.name}
+                      className="w-full h-full object-cover rounded-full"
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                        e.target.nextSibling.style.display = 'flex'
+                      }}
+                    />
+                  ) : null}
+                  <div
+                    className="w-full h-full rounded-full bg-[rgb(27,107,58)] text-sm font-bold text-white flex items-center justify-center"
+                    style={{ display: user.photo ? 'none' : 'flex' }}
+                  >
+                    {user.initials}
+                  </div>
                 </div>
               </Link>
               <button
