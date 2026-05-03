@@ -6,6 +6,7 @@ import { useSpring, animated } from "@react-spring/web"
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Toast from "@/components/Toast"
+import LottieLoader from "@/components/LottieLoader"
 import { animals } from '@/data/animals'
 
 export default function AnimalDetailsPage() {
@@ -20,14 +21,17 @@ export default function AnimalDetailsPage() {
   const [showToast, setShowToast] = useState(false)
   const [toastMsg, setToastMsg] = useState("")
   const [toastType, setToastType] = useState("success")
+  
+  const [pageLoading, setPageLoading] = useState(true)
   const [pageEntered, setPageEntered] = useState(false)
   
   const animal = animals.find(a => a.id === Number(id))
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setPageEntered(true)
-    }, 3000)
+      setPageLoading(false)
+      setTimeout(() => setPageEntered(true), 50)
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -60,6 +64,16 @@ export default function AnimalDetailsPage() {
     setPhone("")
     setAddress("")
     setBookingLoading(false)
+  }
+
+  if (pageLoading) {
+    return (
+      <div className="min-h-screen bg-[#FAFAF5]">
+        <LottieLoader
+          message="Loading animal details..."
+        />
+      </div>
+    )
   }
 
   if (!animal) {
