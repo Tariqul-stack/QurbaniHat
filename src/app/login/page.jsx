@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Toast from "@/components/Toast";
 import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
@@ -11,19 +12,26 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastType, setToastType] = useState("success");
+  const [toastMsg, setToastMsg] = useState("");
+  const [toastTitle, setToastTitle] = useState("");
 
   const handleLogin = async () => {
-    setError("");
-
     if (!email || !password) {
-      setError("Please enter email and password");
+      setToastType("error");
+      setToastTitle("Login Failed");
+      setToastMsg("Please enter email and password");
+      setShowToast(true);
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters");
+      setToastType("error");
+      setToastTitle("Login Failed");
+      setToastMsg("Password must be at least 6 characters");
+      setShowToast(true);
       return;
     }
 
@@ -32,26 +40,39 @@ export default function LoginPage() {
       await loginWithEmail(email, password);
       router.push("/");
     } catch (err) {
-      setError(err.message || "Login failed. Check your credentials.");
+      setToastType("error");
+      setToastTitle("Login Failed");
+      setToastMsg(err.message || "Check your credentials");
+      setShowToast(true);
     } finally {
       setLoading(false);
     }
   };
 
   const handleGoogle = async () => {
-    setError("");
     try {
       await loginWithGoogle();
     } catch (err) {
       console.error(err);
-      setError("Google sign-in failed. Try again.");
+      setToastType("error");
+      setToastTitle("Login Failed");
+      setToastMsg("Google sign-in failed. Try again.");
+      setShowToast(true);
     }
   };
 
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#EFF5F0] p-8">
-      <div className="w-full max-w-[460px] rounded-[24px] border border-[#E2E8E0] bg-white p-10 shadow-[0_8px_40px_rgba(0,0,0,0.08)]">
+    <>
+      <Toast
+        show={showToast}
+        type={toastType}
+        title={toastTitle}
+        message={toastMsg}
+        onClose={() => setShowToast(false)}
+      />
+      <section className="flex min-h-screen items-center justify-center bg-[#EFF5F0] p-8">
+        <div className="w-full max-w-[460px] rounded-[24px] border border-[#E2E8E0] bg-white p-10 shadow-[0_8px_40px_rgba(0,0,0,0.08)]">
         <div className="text-center">
           <div className="mx-auto mb-[1.2rem] flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1B6B3A] text-[2rem]">
             🐄
@@ -134,12 +155,6 @@ export default function LoginPage() {
           />
         </div>
 
-        {error && (
-          <p className="mb-3 rounded-lg bg-red-50 px-4 py-3 text-[0.83rem] text-red-600 border border-red-100">
-            {error}
-          </p>
-        )}
-
         <button
           type="button"
           onClick={handleLogin}
@@ -161,6 +176,7 @@ export default function LoginPage() {
           </Link>
         </p>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
