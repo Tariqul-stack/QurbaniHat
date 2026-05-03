@@ -9,8 +9,9 @@ export const animals = [
     age: 3,
     location: "Bogura",
     icon: "🐄",
+    image: "https://images.pexels.com/photos/29815447/pexels-photo-29815447.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Large Animal",
-    description: "Healthy deshi cow suitable for Qurbani.",
+    description: "Healthy deshi cow suitable for Qurbani. Well fed with natural grass and grains. Strong and energetic."
   },
   {
     id: 2,
@@ -22,8 +23,9 @@ export const animals = [
     age: 4,
     location: "Pabna",
     icon: "🐂",
+    image: "https://images.pexels.com/photos/15477960/pexels-photo-15477960.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Large Animal",
-    description: "Premium Brahman bull with exceptional build.",
+    description: "Premium Brahman bull with exceptional build. Grain-fed for 2 years, excellent health certificate."
   },
   {
     id: 3,
@@ -35,8 +37,9 @@ export const animals = [
     age: 2,
     location: "Sylhet",
     icon: "🐐",
+    image: "https://images.pexels.com/photos/9198769/pexels-photo-9198769.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Small Animal",
-    description: "Classic Black Bengal goat for Qurbani.",
+    description: "Classic Black Bengal goat — one of the finest breeds for Qurbani. Small but meaty, healthy and vaccinated."
   },
   {
     id: 4,
@@ -48,8 +51,9 @@ export const animals = [
     age: 2,
     location: "Rajshahi",
     icon: "🐐",
+    image: "https://images.pexels.com/photos/29535713/pexels-photo-29535713.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Small Animal",
-    description: "Tall and majestic Jamunapari goat.",
+    description: "Tall and majestic Jamunapari goat from Rajshahi. Well-fed with clean water and balanced diet."
   },
   {
     id: 5,
@@ -61,8 +65,9 @@ export const animals = [
     age: 2,
     location: "Khulna",
     icon: "🐑",
+    image: "https://images.pexels.com/photos/33232168/pexels-photo-33232168.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Small Animal",
-    description: "Fat-tailed Garole sheep from Khulna.",
+    description: "Fat-tailed Garole sheep from the riverbanks of Khulna. Known for its tender meat and gentle nature."
   },
   {
     id: 6,
@@ -74,8 +79,9 @@ export const animals = [
     age: 3,
     location: "Dinajpur",
     icon: "🐄",
+    image: "https://images.pexels.com/photos/32842189/pexels-photo-32842189.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Large Animal",
-    description: "Beautiful Sahiwal cow with reddish coat.",
+    description: "Beautiful Sahiwal cow with deep reddish coat. Grass-fed, farm-raised with care."
   },
   {
     id: 7,
@@ -87,8 +93,9 @@ export const animals = [
     age: 2,
     location: "Comilla",
     icon: "🐑",
+    image: "https://images.pexels.com/photos/12887543/pexels-photo-12887543.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Small Animal",
-    description: "Heavy-bodied ram with excellent muscle tone.",
+    description: "Heavy-bodied ram with excellent muscle tone. One of the largest sheep breeds available this season."
   },
   {
     id: 8,
@@ -100,7 +107,8 @@ export const animals = [
     age: 3,
     location: "Gazipur",
     icon: "🐄",
+    image: "https://images.pexels.com/photos/31113098/pexels-photo-31113098.jpeg?auto=compress&cs=tinysrgb&w=800",
     category: "Large Animal",
-    description: "Large Holstein cow from certified farm.",
+    description: "Large Holstein cow from a certified dairy farm in Gazipur. Extremely healthy and fully vaccinated."
   },
 ];

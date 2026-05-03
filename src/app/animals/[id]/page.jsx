@@ -104,8 +104,24 @@ export default function AnimalDetailsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
             {/* LEFT COLUMN — Animal Image */}
-            <div className="bg-[#D8EDD8] rounded-[20px] h-[420px] flex items-center justify-center border border-[#E2E8E0]">
-              <span className="text-[8rem] select-none">{animal.icon}</span>
+            <div className="rounded-2xl overflow-hidden border border-[#E2E8E0] h-[420px] bg-[#D8EDD8] relative">
+              {animal.image ? (
+                <img
+                  src={animal.image}
+                  alt={animal.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none'
+                    e.target.nextSibling.style.display = 'flex'
+                  }}
+                />
+              ) : null}
+              <div
+                className="w-full h-full items-center justify-center text-[8rem] absolute inset-0"
+                style={{ display: animal.image ? 'none' : 'flex' }}
+              >
+                {animal.icon}
+              </div>
             </div>
 
             {/* RIGHT COLUMN — Animal Info */}

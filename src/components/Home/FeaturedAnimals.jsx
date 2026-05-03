@@ -55,16 +55,32 @@ export default function FeaturedAnimals() {
                 key={animal.id}
                 delay={index * 100}
                 onClick={() => goToAnimal(animal.id)}
-                className="overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
+                className="group overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
               >
-                <div className="relative flex h-[200px] items-center justify-center bg-[#D8EDD8]">
+                <div className="relative h-[200px] overflow-hidden bg-[#D8EDD8]">
+                  {animal.image ? (
+                    <img
+                      src={animal.image}
+                      alt={animal.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div
+                    className="absolute inset-0 items-center justify-center text-[5rem]"
+                    style={{ display: animal.image ? 'none' : 'flex' }}
+                  >
+                    {animal.icon}
+                  </div>
                   <span
                     className={`absolute left-3 top-3 rounded-md px-3 py-1 text-[0.75rem] font-semibold text-white ${typeBadgeClasses[animal.type] || "bg-[#C8860A]"
                       }`}
                   >
                     {animal.type}
                   </span>
-                  <span className="text-[5rem]">{animal.icon}</span>
                 </div>
 
                 <div className="p-[1.2rem]">
