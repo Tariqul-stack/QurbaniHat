@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/context/AuthContext"
 import { useState } from "react"
+import { useSpring, animated } from "@react-spring/web"
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Toast from "@/components/Toast"
@@ -21,6 +22,11 @@ export default function AnimalDetailsPage() {
   const [toastType, setToastType] = useState("success")
   
   const animal = animals.find(a => a.id === Number(id))
+  const pageSpring = useSpring({
+    from: { opacity: 0, transform: "translateY(20px)" },
+    to: { opacity: 1, transform: "translateY(0px)" },
+    config: { tension: 280, friction: 26 }
+  })
 
   const handleBooking = async () => {
     if (!name || !email || !phone || !address) {
@@ -68,7 +74,8 @@ export default function AnimalDetailsPage() {
 
       <main className="min-h-screen bg-[#FAFAF5] px-8 py-12">
         <div className="mx-auto max-w-[1200px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <animated.div style={pageSpring}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
             {/* LEFT COLUMN — Animal Image */}
             <div className="bg-[#D8EDD8] rounded-[20px] h-[420px] flex items-center justify-center border border-[#E2E8E0]">
@@ -242,7 +249,8 @@ export default function AnimalDetailsPage() {
                 </div>
               )}
             </div>
-          </div>
+            </div>
+          </animated.div>
         </div>
       </main>
     </>

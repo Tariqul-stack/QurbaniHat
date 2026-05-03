@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import AnimatedCard from "@/components/AnimatedCard";
 import { animals } from "@/data/animals";
 
 const filters = [
@@ -161,11 +162,12 @@ export default function AnimalsPage() {
 
       <div className="min-h-[calc(100vh-68px-60px)] bg-[#FAFAF5] px-8 py-10">
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {filtered.map((animal) => (
-            <article
+          {filtered.map((animal, index) => (
+            <AnimatedCard
               key={animal.id}
+              delay={index * 80}
               onClick={() => goToAnimal(animal.id)}
-              className="cursor-pointer overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)]"
+              className="overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
             >
               <div className="relative flex h-[200px] items-center justify-center rounded-t-[12px] bg-[#D8EDD8]">
                 <span
@@ -209,7 +211,7 @@ export default function AnimalsPage() {
                   </button>
                 </div>
               </div>
-            </article>
+            </AnimatedCard>
           ))}
         </div>
       </div>

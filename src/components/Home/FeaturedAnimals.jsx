@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import AnimatedCard from "@/components/AnimatedCard";
 import { animals } from "@/data/animals";
 
 const typeBadgeClasses = {
@@ -34,11 +35,12 @@ export default function FeaturedAnimals() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {featuredAnimals.map((animal) => (
-            <article
+          {featuredAnimals.map((animal, index) => (
+            <AnimatedCard
               key={animal.id}
+              delay={index * 100}
               onClick={() => goToAnimal(animal.id)}
-              className="cursor-pointer overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white transition-all duration-[250ms] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)]"
+              className="overflow-hidden rounded-2xl border border-[#E2E8E0] bg-white"
             >
               <div className="relative flex h-[200px] items-center justify-center bg-[#D8EDD8]">
                 <span
@@ -79,7 +81,7 @@ export default function FeaturedAnimals() {
                   </div>
                 </div>
               </div>
-            </article>
+            </AnimatedCard>
           ))}
         </div>
 
