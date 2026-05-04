@@ -48,7 +48,7 @@ after authentication.
 - Fully responsive design (mobile + desktop)
 
 ### 🛠️ Tech Stack
-- **Framework** — Next.js 14 (App Router)
+- **Framework** — Next.js (App Router)
 - **Styling** — Tailwind CSS
 - **Authentication** — Better Auth
 - **Database** — MongoDB Atlas
