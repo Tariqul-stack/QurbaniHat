@@ -1,6 +1,6 @@
 # 🐄 QurbaniHat — Premium Livestock Booking Platform
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)
 ![Better Auth](https://img.shields.io/badge/Better-Auth-green?style=flat-square)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb)
@@ -14,7 +14,7 @@ after authentication.
 
 ## 🔗 Live Demo
 
-[QurbaniHat Live Site](YOUR_VERCEL_URL_HERE)
+[QurbaniHat Live Site](https://qurbani-hat-tan.vercel.app)
 
 ---
 
@@ -48,7 +48,7 @@ after authentication.
 - Fully responsive design (mobile + desktop)
 
 ### 🛠️ Tech Stack
-- **Framework** — Next.js (App Router)
+- **Framework** — Next.js 16 (App Router)
 - **Styling** — Tailwind CSS
 - **Authentication** — Better Auth
 - **Database** — MongoDB Atlas
@@ -80,7 +80,7 @@ after authentication.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/qurbanihat.git
+git clone https://github.com/Tariqul-stack/QurbaniHat.git
 cd qurbanihat
 ```
 
